@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+
+<div class="text-center">
+    <h1 class="display-4">The Info Support Adventure</h1>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Form.PlayerName"></label>
+            <input asp-for="Form.PlayerName" class="form-control" />
+            <span asp-validation-for="Form.PlayerName"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">Start!</button>
+    </form>
+</div> 
+

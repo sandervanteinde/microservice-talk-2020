@@ -1,0 +1,13 @@
+﻿@page "{questId}"
+@model Game.Quests.QuestModel
+
+<h4>@Model.Quest.Name</h4>
+<p>@Model.Quest.Description</p>
+
+<span>Actions:</span>
+<div>
+    <form method="post"> 
+        <button class="btn btn-outline-primary btn-block" type="submit">Complete quest</button>
+    </form>
+    <a class="btn btn-outline-secondary btn-block" asp-page="Index">Return to quest list</a>
+</div>

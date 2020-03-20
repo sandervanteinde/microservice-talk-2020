@@ -1,0 +1,46 @@
+﻿@page
+@model TISA.Pages.Admin.Quests.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@section Styles {
+<style>
+    .header {
+        font-weight: bold;
+    }
+    .row:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+    .row {
+        margin: 10px 0;
+    }
+</style>
+} 
+
+<h1>Index</h1>
+
+
+<div class="row header">
+    <span class="col-5">Quest ID</span>
+    <span class="col-5">Quest Description</span>
+    <span class="col-2">Actions</span>
+</div>
+@foreach (var quest in Model.Quests)
+{
+    <div class="row">
+        <span class="col-5">@quest.Id</span>
+        <span class="col-5"><quest-description quest="quest"></quest-description></span>
+        <div class="col-2">
+            <a asp-page="Edit" asp-route-questId="@quest.Id" class="btn btn-outline-primary btn-block">Edit</a>
+            <form method="post">
+                <input type="hidden" name="questId" value="@quest.Id" />
+                <button class="btn btn-outline-danger btn-block">Delete</button>
+            </form>
+        </div>
+    </div>
+}
+
+<a asp-page="Create" class="btn btn-outline-primary btn-block">Create +</a>
+<a asp-page="../Index" class="btn btn-outline-secondary btn-block">Back to admin page</a>

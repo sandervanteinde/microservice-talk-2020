@@ -1,0 +1,53 @@
+﻿@page
+@model TISA.Pages.Admin.Items.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Item list</h1>
+@section Styles {
+    <style>
+        .header {
+            font-weight: bold;
+        }
+
+        .row:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        }
+
+        .row {
+            margin: 10px 0;
+        }
+    </style>
+}
+
+<div class="row header">
+    <span class="col-3">Item ID</span>
+    <span class="col-3">Item Name</span>
+    <span class="col-3">Buy price / Sell Price</span>
+    <span class="col-1">At shop?</span>
+    <span class="col-2">Actions</span>
+</div>
+@foreach (var item in Model.Items)
+{
+    <div class="row">
+        <span class="col-3">@item.Id</span>
+        <span class="col-3">@item.Name</span>
+        <div class="col-3">
+            @item.BuyPrice / @item.SellPrice
+        </div>
+        <div class="col-1">
+            <input disabled readonly type="checkbox" @(item.AvailableAtShop ? "checked": string.Empty) />
+        </div>
+        <div class="col-2">
+            <a class="btn btn-block btn-outline-primary" asp-page="Edit" asp-route-itemId="@item.Id">Edit</a>
+            <form method="post">
+                <input type="hidden" asp-for="Form.ItemId" value="@item.Id" />
+                <button type="submit" class="btn btn-block btn-outline-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+}
+
+<a class="btn btn-block btn-outline-primary" asp-page="Create">Create +</a>
+<a asp-page="../Index" class="btn btn-outline-secondary btn-block">Back to admin page</a>

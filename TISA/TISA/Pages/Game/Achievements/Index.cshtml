@@ -1,0 +1,18 @@
+﻿@page
+@model TISA.Pages.Game.Achievements.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Achievements</h1>
+
+@foreach(var achievement in Model.Achievements)
+{
+    <div class="row">
+        <span class="col-8">@achievement.Name</span>
+        <span class="col-4">@achievement.Points points</span>
+    </div>
+}
+
+<a asp-page="../Index" class="btn btn-outline-secondary btn-block">Return to menu</a>
+

@@ -1,0 +1,39 @@
+﻿@page
+@model TISA.Pages.Admin.Quests.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create quest</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Form.Name"></label>
+        <input asp-for="Form.Name" class="form-control" />
+        <span asp-validation-for="Form.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Form.Description"></label>
+        <textarea asp-for="Form.Description" class="form-control"></textarea>
+        <span asp-validation-for="Form.Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Form.GoldReward"></label>
+        <input asp-for="Form.GoldReward" class="form-control" />
+        <span asp-validation-for="Form.GoldReward"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Form.ExperienceReward"></label>
+        <input asp-for="Form.ExperienceReward" class="form-control" />
+        <span asp-validation-for="Form.ExperienceReward"></span>
+    </div>
+    @if(Model.CanSelectAvailableQuest)
+    {
+        <div class="form-group">
+            <label asp-for="Form.ComesAfterQuestId"></label>
+            <select asp-for="Form.ComesAfterQuestId" asp-items="Model.AvailableFollowupQuests" class="form-control"></select>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-block btn-outline-primary">Add</button>
+</form>

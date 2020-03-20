@@ -1,0 +1,28 @@
+﻿@page
+@model TISA.Pages.Game.PlayerInformation.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Model.Player.Name</h1>
+
+<p>Level @Model.Player.Level</p>
+<p>@Model.Player.Experience EXP</p>
+<p>@Model.Player.Gold Gold</p>
+
+<h2>Inventory</h2>
+@if (Model.PlayerHasItems)
+{
+    <ul>
+        @foreach (var item in Model.PlayerInventory)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>You don't have any items in your inventory. You can buy some at <a asp-page="../Shop/Index">the shop</a> if you have sufficient gold</p>
+}
+
+<a asp-page="../Index" class="btn btn-outline-secondary btn-block">Return to menu</a>

@@ -1,0 +1,30 @@
+﻿@page "{itemId}"
+@model TISA.Pages.Admin.Items.EditModel
+@{
+}
+<h1>Edit item</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Form.Name"></label>
+        <input asp-for="Form.Name" class="form-control" />
+        <span asp-validation-for="Form.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Form.BuyPrice"></label>
+        <input asp-for="Form.BuyPrice" class="form-control" />
+        <span asp-validation-for="Form.BuyPrice"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Form.SellPrice"></label>
+        <input asp-for="Form.SellPrice" class="form-control" />
+        <span asp-validation-for="Form.SellPrice"></span>
+    </div>
+    <div class="form-check">
+        <input asp-for="Form.AvailableAtShop" class="form-check-input" />
+        <label class="form-check-label" asp-for="Form.AvailableAtShop"></label>
+        <span asp-validation-for="Form.AvailableAtShop"></span>
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary btn-block">Edit</button>
+</form>

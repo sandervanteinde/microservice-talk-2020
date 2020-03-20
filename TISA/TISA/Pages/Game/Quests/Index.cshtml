@@ -1,0 +1,18 @@
+﻿@page
+@model Game.Quests.IndexModel
+
+<h4><player-name>, pick one of the following quests!</h4>
+
+<h5>Available quests:</h5>
+
+<ul>
+    @foreach (var quest in Model.Quests)
+    {
+        <li>
+            <a asp-page="Quest" asp-route-questId="@quest.Id">
+                <quest-description quest="quest"></quest-description>
+            </a>
+        </li>
+    }
+</ul>
+<a asp-page="../Index" class="btn btn-outline-secondary btn-block">Return to menu</a>
