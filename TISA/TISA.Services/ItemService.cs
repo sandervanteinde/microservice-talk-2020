@@ -36,7 +36,7 @@ namespace TISA.Services
         public Task DeleteItemByIdAsync(Guid itemId)
         {
             var itemIndex = _items.FindIndex(item => item.Id == itemId);
-            if(itemIndex >= 0)
+            if (itemIndex >= 0)
             {
                 _items.RemoveAt(itemIndex);
             }
@@ -78,7 +78,7 @@ namespace TISA.Services
             {
                 throw new InvalidOperationException("Attempted to get player information, but no player was defined");
             }
-            if(!_itemsPerPlayer.TryGetValue(_playerService.Player, out var inventory))
+            if (!_itemsPerPlayer.TryGetValue(_playerService.Player, out var inventory))
             {
                 _itemsPerPlayer.Add(_playerService.Player, inventory = new List<Guid>());
             }
@@ -96,10 +96,10 @@ namespace TISA.Services
         {
             var inventory = GetInventoryForPlayer();
             var item = await GetItemByIdAsync(itemId);
-            if(item != null)
+            if (item != null)
             {
                 var index = inventory.FindIndex(i => item.Id == i);
-                if(index >= 0)
+                if (index >= 0)
                 {
                     inventory.RemoveAt(index);
                     var player = _playerService.Player;

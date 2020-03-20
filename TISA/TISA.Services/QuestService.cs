@@ -33,6 +33,7 @@ namespace TISA.Services
             var player = _playerService.Player;
             var quest = await GetQuestByIdAsync(questId);
             player.Experience += quest.ExperienceReward;
+            player.Level = (player.Experience / 100) + 1;
             player.Gold += quest.GoldReward;
         }
 
@@ -98,7 +99,7 @@ namespace TISA.Services
             {
                 _completedQuests.Add(player, completedQuests = new HashSet<Guid>());
             }
-            
+
             return completedQuests;
         }
     }
