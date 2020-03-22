@@ -5,6 +5,8 @@ In this lab we will focus on the player service. You might ask yourself: Why are
 Therefore, we shall start with the Player Service, and we will start simple: We will just implement a web API that the frontend can communicate to for the player data.
 Our microservice will follow [REST guidelines](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
+During the labs we will work in many different microservices. If you are getting overwhelmed, adding some logging might assist you in your development! Just implement `ILogger<ClassName>` in any file, and log what you would like to know. You can navigate to (Seq)[http://localhost:7200] to view the logs from **all** applications.
+
 ## Excercise 1: The PlayerController
 - Open the PlayerService part of the solution
 - Navigate to the `PlayerController` class.
