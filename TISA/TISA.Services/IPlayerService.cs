@@ -8,9 +8,10 @@ namespace TISA.Services
 {
     public interface IPlayerService
     {
-        Player Player { get; set; }
-        bool IsPlayerDefined { get; }
+        Player Player { get; }
+        bool IsPlayerDefined => Player != null;
 
-        Task SetPlayerByName(string playerName);
+        Task SetPlayerByPlayerIdAsync(Guid playerId);
+        Task<Guid> CreatePlayerNameAsync(string playerName);
     }
 }

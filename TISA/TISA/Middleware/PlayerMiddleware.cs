@@ -23,11 +23,11 @@ namespace TISA.Middleware
         {
             var session = context.Session;
 
-            var playerName = session.GetString("PlayerName");
+            var playerName = session.GetString("PlayerId");
 
             if (!string.IsNullOrEmpty(playerName))
             {
-                await _playerService.SetPlayerByName(playerName);
+                await _playerService.SetPlayerByPlayerIdAsync(Guid.Parse(playerName));
             }
 
             await next(context);

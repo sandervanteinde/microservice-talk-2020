@@ -7,6 +7,10 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="2.4.2" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TISA.Models\TISA.Models.csproj" />

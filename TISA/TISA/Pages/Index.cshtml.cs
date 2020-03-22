@@ -35,8 +35,8 @@ namespace TISA.Pages
                 return Page();
             }
 
-            await _playerService.SetPlayerByName(Form.PlayerName);
-            HttpContext.Session.SetString("PlayerName", Form.PlayerName);
+            var playerId = await _playerService.CreatePlayerNameAsync(Form.PlayerName);
+            HttpContext.Session.SetString("PlayerId", playerId.ToString());
             return RedirectToPage("/Game/Index");
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flurl.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ namespace TISA.Services
 {
     internal class AchievementService : IAchievementService
     {
+        private readonly IPlayerService _playerService;
+
+        public AchievementService(IPlayerService playerService)
+        {
+            _playerService = playerService;
+        }
         public Task<ICollection<Achievement>> GetAchievementsForPlayerAsync()
         {
-            // this is a placeholder. This part is to difficult to implement and will create a big ball of mud
-            var achievement = new Achievement { Id = Guid.NewGuid(), Name = "Placeholder", Points = 100 };
-
-            return Task.FromResult<ICollection<Achievement>>(new[] { achievement });
+            return $"https://localhost:7601/Achievement/{_playerService.Player.Id}".GetJsonAsync<ICollection<Achievement>>();
         }
     }
     
