@@ -2,9 +2,6 @@
 using PlayerService.Database;
 using PlayerService.Messages;
 using Shared.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace PlayerService.MessageHandlers

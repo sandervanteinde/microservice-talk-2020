@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TISA.Models
+﻿namespace TISA.Models
 {
     public class Achievement
     {

@@ -3,9 +3,6 @@ using AchievementService.Messages;
 using AchievementService.Services;
 using Microsoft.EntityFrameworkCore;
 using Shared.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AchievementService.MessageHandlers
