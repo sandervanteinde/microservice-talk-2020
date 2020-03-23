@@ -23,11 +23,9 @@ namespace ItemService
             services.AddControllers();
             services.AddSharedServices("Item Service");
             services.AddDbContext<ItemDbContext>();
-            services.AddMessagePublishing("ItemService");
-            using(var context = new ItemDbContext())
-            {
-                context.Database.EnsureCreated();
-            }
+
+            using var context = new ItemDbContext();
+            context.Database.EnsureCreated();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

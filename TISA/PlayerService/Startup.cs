@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PlayerService.Database;
-using PlayerService.MessageHandlers;
 using Shared;
 
 namespace PlayerService
@@ -24,12 +23,6 @@ namespace PlayerService
             services.AddControllers();
             services.AddSharedServices("Player Service");
             services.AddDbContext<PlayerDbContext>();
-
-            services.AddMessagePublishing("PlayerService", builder => {
-                builder.WithHandler<QuestCompletedMessageHandler>("QuestCompleted")
-                    .WithHandler<ItemSoldMessageHandler>("ItemSold")
-                    .WithHandler<ItemBoughtMessageHandler>("ItemBought");
-            });
 
             using var db = new PlayerDbContext();
             db.Database.EnsureCreated();

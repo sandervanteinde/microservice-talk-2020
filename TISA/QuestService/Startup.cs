@@ -23,7 +23,6 @@ namespace QuestService
             services.AddControllers();
             services.AddSharedServices("Quest Service");
             services.AddDbContext<QuestDbContext>();
-            services.AddMessagePublishing("QuestService");
 
             using var context = new QuestDbContext();
             context.Database.EnsureCreated();

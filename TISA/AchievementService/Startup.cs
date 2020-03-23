@@ -1,6 +1,4 @@
 using AchievementService.Database;
-using AchievementService.MessageHandlers;
-using AchievementService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,16 +23,6 @@ namespace AchievementService
             services.AddControllers();
             services.AddSharedServices("Achievement Service");
             services.AddDbContext<AchievementDbContext>();
-            services.AddScoped<DetermineAchievementsService>();
-            services.AddSingleton<AchievementRepository>();
-            services.AddMessagePublishing("AchievementService", builder =>
-            {
-                builder.WithHandler<ItemBoughtMessageHandler>("ItemBought")
-                    .WithHandler<ItemSoldMessageHandler>("ItemSold")
-                    .WithHandler<QuestCompletedMessageHandler>("QuestCompleted")
-                    .WithHandler<AchievementEarnedMessageHandler>("AchievementEarned")
-                    .WithHandler<PlayerLevelledMessageHandler>("PlayerLevelled");
-            });
 
             using var context = new AchievementDbContext();
             // For easy of developing. Replace this with Migrations if you wish to persist data.
