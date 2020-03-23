@@ -40,6 +40,7 @@ namespace ItemService.Controllers
             {
                 return BadRequest();
             }
+
             _dbContext.PlayerItems.Add(new PlayerItem
             {
                 ItemId = itemId,

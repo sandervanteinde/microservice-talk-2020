@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AchievementService.MessageHandlers
 {
+    /// <summary>
+    /// Abstract class that handles the basic operations for all mutations on the PlayerInformation object
+    /// </summary>
     internal abstract class PlayerSettingsHandlerBase<T> : IMessageHandler<T>
         where T : class, IPlayerIdMessage
     {

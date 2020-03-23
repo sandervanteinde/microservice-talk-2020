@@ -42,11 +42,13 @@ namespace QuestService.Controllers
         {
             var quest = await _dbContext.Quests.FirstOrDefaultAsync(q => q.Id == questId);
 
-            if(quest != null)
+            if(quest == null)
             {
-                _dbContext.Quests.Remove(quest);
-                await _dbContext.SaveChangesAsync();
+                return BadRequest();
             }
+
+            _dbContext.Quests.Remove(quest);
+            await _dbContext.SaveChangesAsync();
 
             return Ok();
         }

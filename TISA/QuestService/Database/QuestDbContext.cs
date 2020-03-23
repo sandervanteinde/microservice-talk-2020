@@ -26,7 +26,9 @@ namespace QuestService.Database
         internal Task<Quest[]> GetAvailableQuestsForPlayerIdAsync(Guid playerId)
         {
             return Quests
+                // All quests that are not completed
                 .Where(q => !CompletedQuests.Where(c => c.PlayerId == playerId).Select(c => c.QuestId).Contains(q.Id))
+                // All quests that does not have a prerequisite or that has its prerequisite completed
                 .Where(q => q.ComesAfterQuestId == null || CompletedQuests.Where(c => c.PlayerId == playerId).Select(c => c.QuestId).Contains(q.ComesAfterQuestId.Value))
                 .ToArrayAsync();
         }

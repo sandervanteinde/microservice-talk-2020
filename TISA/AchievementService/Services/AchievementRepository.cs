@@ -3,6 +3,9 @@ using System;
 
 namespace AchievementService.Services
 {
+    /// <summary>
+    /// Singleton repository that has all available achievements in them
+    /// </summary>
     public class AchievementRepository
     {
         public Achievement Level2Achieved = new Achievement

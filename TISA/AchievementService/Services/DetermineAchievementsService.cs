@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AchievementService.Services
 {
+    /// <summary>
+    /// Services for easily determining which achievements should be granted to a player
+    /// </summary>
     public class DetermineAchievementsService
     {
         private readonly AchievementDbContext _dbContext;
@@ -27,12 +30,14 @@ namespace AchievementService.Services
             var achievements = DetermineAchievedAchievements(information).ToList();
             var alreadyAchieved = new HashSet<Guid>(await _dbContext.Achievements.Where(id => id.PlayerId == information.Id).Select(id => id.AchievementId).ToArrayAsync());
 
+            // All achievements that were not achieved before, but are now achieved, are newly achieved achievements.
             var newlyAchieved = achievements.Where(achievement => !alreadyAchieved.Contains(achievement.AchievementId)).ToArray();
             if(newlyAchieved.Length == 0)
             {
                 return;
             }
 
+            // Add the new achievement to the database and publish a message
             foreach(var newAchievement in newlyAchieved)
             {
                 var achievement = new Achievement
@@ -48,6 +53,9 @@ namespace AchievementService.Services
             }
         }
 
+        /// <summary>
+        /// Determine which achievements are achieved by the player
+        /// </summary>
         private IEnumerable<Achievement> DetermineAchievedAchievements(PlayerInformation information)
         {
             if(information.MoneySpentInShops >= 100)

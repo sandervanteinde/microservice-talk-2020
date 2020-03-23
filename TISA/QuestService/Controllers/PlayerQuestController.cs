@@ -28,13 +28,18 @@ namespace QuestService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<IEnumerable<Quest>>> CompleteQuest(Guid playerId, [FromBody] Guid questId) 
+        public async Task<IActionResult> CompleteQuest(Guid playerId, [FromBody] Guid questId) 
         {
+            var quest = _dbContext.Quests.FirstOrDefault(q => q.Id == questId);
+            if(quest == null)
+            {
+                return BadRequest();
+            }
+
             var completeQuest = new CompletedQuest { PlayerId = playerId, QuestId = questId };
             _dbContext.CompletedQuests.Add(completeQuest);
             await _dbContext.SaveChangesAsync();
 
-            var quest = _dbContext.Quests.FirstOrDefault(q => q.Id == questId);
 
             await _messagePublisher.PublishMessageAsync("QuestCompleted", new { PlayerId = playerId, Quest = quest });
 

@@ -24,10 +24,15 @@ namespace PlayerService.MessageHandlers
                 return;
             }
 
+            // Add the quest and gold reward for the player
             player.Experience += obj.Quest.ExperienceReward;
             player.Gold += obj.Quest.GoldReward;
+
+            // calculate the new level of the player with a very complex mathematical operation
             var previousLevel = player.Level;
             var newLevel = player.Experience / 100 + 1;
+
+            // When player reached a new level, emit a new event
             if(previousLevel != newLevel)
             {
                 player.Level = newLevel;

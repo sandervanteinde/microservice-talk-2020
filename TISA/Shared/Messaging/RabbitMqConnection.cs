@@ -3,6 +3,9 @@ using System;
 
 namespace Shared.Messaging
 {
+    /// <summary>
+    /// Singleton service keeping track of our connection with RabbitMQ.
+    /// </summary>
     internal class RabbitMqConnection : IDisposable
     {
         private IConnection _connection;
@@ -18,7 +21,8 @@ namespace Shared.Messaging
             {
                 var factory = new ConnectionFactory
                 {
-                    Uri = new Uri("amqp://guest:guest@localhost:7101")
+                    Uri = new Uri("amqp://guest:guest@localhost:7101"),
+                    AutomaticRecoveryEnabled = true // When the connection is lost, this will automatically reconnect us when it can get back up
                 };
                 _connection = factory.CreateConnection();
             }
