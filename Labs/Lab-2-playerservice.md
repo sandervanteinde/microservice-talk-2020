@@ -1,6 +1,6 @@
 # Lab 2: The Player Service
 
-In this lab we will focus on the player service. You might ask yourself: Why are we foucssing in one service. Because many companies are running a big monolith piece of software, you want to use the (Strangler Pattern)[https://docs.microsoft.com/en-us/azure/architecture/patterns/strangler] to slowly migrate the monolith to the microservice architecture.
+In this lab we will focus on the player service. You might ask yourself: Why are we foucssing in one service. Because many companies are running a big monolith piece of software, you want to use the [Strangler Pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/strangler) to slowly migrate the monolith to the microservice architecture.
 
 Therefore, we shall start with the Player Service, and we will start simple: We will just implement a web API that the frontend can communicate to for the player data.
 Our microservice will follow [REST guidelines](https://en.wikipedia.org/wiki/Representational_state_transfer).
