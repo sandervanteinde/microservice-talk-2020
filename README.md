@@ -18,5 +18,5 @@ I recommend using the Docker approach because this will get you started fairly q
   - [Starter docker](Labs/Lab-1-preperation.md)
   - [Starter not-docker](Labs/Lab-1-preperation-without-docker.md)
 2. [PlayerService](Labs/Lab-2-playerservice.md)
-3. [QuestService](Labs/Lab-3-playerservice.md)
+3. [QuestService](Labs/Lab-3-questservice.md)
 4. [Completing the solution](Labs/Lab-4-completing-the-solution.md)
