@@ -19,6 +19,12 @@ In the starter are 4 database context files, these should all point to a differe
 
 If you are running a Microsft Sql server, I recommend using that.
 
+Find the following `DbContext` files in the solution, and update it's `OnConfiguring()` method to point to the right database.
+
+- AchievementDbContext
+- ItemDbContext
+- QuestDbContext
+- PlayerDbContext
 
 ### Message Broker
 Our message broker in this solutiono is RabbitMQ.
@@ -31,6 +37,13 @@ RabbitMQ can be installed with all its default settings.
 
 ### Enabling the management interface for RabbitMQ
 
+Open the `RabbitMQ command prompt` as an **administrator** (this is available in your startup menu, just start typing its name) 
+
+Run the following command:
+
+`rabbitmq-plugins enable rabbitmq_management`.
+
+You can validate if this works by visting http://localhost:15672
 
 ### Seq
 
