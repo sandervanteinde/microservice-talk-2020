@@ -15,7 +15,7 @@ namespace Shared
             services.AddLogging(loggingBuilder =>
             {
                 loggingBuilder
-                    .AddSeq("http://localhost:7201")
+                    .AddSeq("http://localhost:5341")
                     .AddConsole()
                     .SetMinimumLevel(LogLevel.Debug);
             });
